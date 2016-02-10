@@ -1,0 +1,53 @@
+<idea-plugin version="2">
+	<id>cz.daku.intellij.extraActions</id>
+	<name>Extra Actions</name>
+	<version>1.0</version>
+	<vendor>Daniel Kurecka</vendor>
+
+	<description><![CDATA[
+
+	]]></description>
+
+	<!--<change-notes><![CDATA[
+
+		]]>
+	</change-notes>-->
+
+	<idea-version since-build="135"/>
+	<depends>com.intellij.modules.lang</depends>
+	<!-- thsese depends maybe required for ToggleQuotes action -->
+	<depends optional="true">com.jetbrains.php</depends>
+	<depends optional="true">com.intellij.css</depends>
+	<depends optional="true">JSIntentionPowerPack</depends>
+
+	<actions>
+		<action id="SplitSelectionIntoLines"
+			class="cz.daku.intellij.extraActions.selectionSplit.SplitSelectionIntoLinesAction"
+			text="Split Selection into Lines"/>
+		<action id="SplitSelection"
+			class="cz.daku.intellij.extraActions.selectionSplit.SplitSelectionAction"
+			text="Split Selection"/>
+		<action id="MoveToNextParagraph"
+			class="cz.daku.intellij.extraActions.paragraph.MoveToNextParagraphAction"
+			text="Move to Next Paragraph"/>
+		<action id="MoveToNextParagraphWithSelection"
+			class="cz.daku.intellij.extraActions.paragraph.MoveToNextParagraphWithSelectionAction"
+			text="Move to Next Paragraph with Selection"/>
+		<action id="MoveToPreviousParagraph"
+			class="cz.daku.intellij.extraActions.paragraph.MoveToPreviousParagraphAction"
+			text="Move to Previous Paragraph"/>
+		<action id="MoveToPreviousParagraphWithSelection"
+			class="cz.daku.intellij.extraActions.paragraph.MoveToPreviousParagraphWithSelectionAction"
+			text="Move to Previous Paragraph with Selection"/>
+		<action id="BreakQuotes"
+			class="cz.daku.intellij.extraActions.BreakQuotesAction"
+			text="Break Quotes"/>
+		<action id="SelectInProject"
+			class="cz.daku.intellij.extraActions.SelectInProjectAction"
+			text="Select In Project"/>
+		<action id="ToggleQuotes"
+			class="cz.daku.intellij.extraActions.ToggleQuotesAction"
+			text="Toggle Quotes"/>
+	</actions>
+
+</idea-plugin>
