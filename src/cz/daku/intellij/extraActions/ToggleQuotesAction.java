@@ -11,6 +11,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.css.actions.CssReplaceQuotesIntention;
 import com.jetbrains.php.lang.intentions.PhpReplaceQuotesIntention;
+import com.jetbrains.python.codeInsight.intentions.PyQuotedStringIntention;
+import org.coffeescript.codeinsight.intentions.CoffeeScriptDoubleToSingleQuotedStringIntention;
+import org.coffeescript.codeinsight.intentions.CoffeeScriptSingleToDoubleQuotedStringIntention;
 import org.intellij.idea.lang.javascript.intention.string.JSDoubleToSingleQuotedStringIntention;
 import org.intellij.idea.lang.javascript.intention.string.JSSingleToDoubleQuotedStringIntention;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +62,21 @@ public class ToggleQuotesAction extends EditorAction {
 					break;
 
 				case "JavaScript":
-					toggleJavaScript(project, editor, element);
+					try {
+						Class.forName("org.intellij.idea.lang.javascript.intention.string.JSDoubleToSingleQuotedStringIntention");
+					} catch (ClassNotFoundException e) { // means that JSIntentionPowerPack plugin is not loaded
+						break;
+					}
+
+					if (element.getParent().getLanguage().getID().equals("CoffeeScript")) {
+						toggleCoffeeScript(project, editor, element);
+					} else {
+						toggleJavaScript(project, editor, element);
+					}
+					break;
+
+				case "Python":
+					togglePython(project, editor, psiFile);
 					break;
 			}
 		}
@@ -79,12 +96,6 @@ public class ToggleQuotesAction extends EditorAction {
 		}
 
 		private void toggleJavaScript(Project project, Editor editor, PsiElement element) {
-			try {
-				Class.forName("org.intellij.idea.lang.javascript.intention.string.JSDoubleToSingleQuotedStringIntention");
-			} catch (ClassNotFoundException e) { // means that JSIntentionPowerPack plugin is not loaded
-				return;
-			}
-
 			JSDoubleToSingleQuotedStringIntention intentionDouble = new JSDoubleToSingleQuotedStringIntention();
 			if (intentionDouble.isAvailable(project, editor, element)) {
 				intentionDouble.invoke(project, editor, element);
@@ -94,6 +105,26 @@ public class ToggleQuotesAction extends EditorAction {
 			JSSingleToDoubleQuotedStringIntention intentionSingle = new JSSingleToDoubleQuotedStringIntention();
 			if (intentionSingle.isAvailable(project, editor, element)) {
 				intentionSingle.invoke(project, editor, element);
+			}
+		}
+
+		private void toggleCoffeeScript(Project project, Editor editor, PsiElement element) {
+			CoffeeScriptDoubleToSingleQuotedStringIntention intentionDouble = new CoffeeScriptDoubleToSingleQuotedStringIntention();
+			if (intentionDouble.isAvailable(project, editor, element)) {
+				intentionDouble.invoke(project, editor, element);
+				return;
+			}
+
+			CoffeeScriptSingleToDoubleQuotedStringIntention intentionSingle = new CoffeeScriptSingleToDoubleQuotedStringIntention();
+			if (intentionSingle.isAvailable(project, editor, element)) {
+				intentionSingle.invoke(project, editor, element);
+			}
+		}
+
+		private void togglePython(Project project, Editor editor, PsiFile psiFile) {
+			PyQuotedStringIntention intention = new PyQuotedStringIntention();
+			if (intention.isAvailable(project, editor, psiFile)) {
+				intention.invoke(project, editor, psiFile);
 			}
 		}
 
