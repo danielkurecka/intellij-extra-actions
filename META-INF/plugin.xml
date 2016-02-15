@@ -2,10 +2,12 @@
 	<id>cz.daku.intellij.extraActions</id>
 	<name>Extra Actions</name>
 	<version>1.0</version>
-	<vendor>Daniel Kurecka</vendor>
+	<vendor email="danielkurecka@gmail.com">Daniel Kurecka</vendor>
 
 	<description><![CDATA[
-
+		Adds some addional actions, see
+		<a href="http://github.com/danielkurecka/intellij-extra-actions">readme</a>
+		at github for list and description.
 	]]></description>
 
 	<!--<change-notes><![CDATA[
@@ -15,7 +17,7 @@
 
 	<idea-version since-build="135"/>
 	<depends>com.intellij.modules.lang</depends>
-	<!-- thsese depends maybe required for ToggleQuotes action -->
+	<!-- these depends maybe required for ToggleQuotes action -->
 	<depends optional="true">com.jetbrains.php</depends>
 	<depends optional="true">com.intellij.css</depends>
 	<depends optional="true">JSIntentionPowerPack</depends>
