@@ -1,4 +1,4 @@
-# Extra Actions
+# Extra Actions for IntelliJ
 This is a plugin for IntelliJ based IDEs (IDEA, PhpStorm, PyCharm, etc.) and it provides some additional actions:
 
 ### Split Selection into Lines
@@ -36,7 +36,8 @@ Recommended shortcut: <kbd>CTRL+SHIFT+DOWN/UP</kbd>
 Shows current file in the project tool window.<br>
 Recommended shortcut: <kbd>CTRL+SHIFT+Y</kbd>
 
-* * *
+## Installation
+Inside the IDE go to _Settings|Plugins_, click _Browser Repositories..._ and search for 'Extra Actions'.
 
 #### Shortcuts
 No shortcuts are set by default. This is done to prevent conflicts.
