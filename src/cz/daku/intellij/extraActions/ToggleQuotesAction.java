@@ -6,6 +6,8 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
 import com.intellij.openapi.editor.actionSystem.EditorWriteActionHandler;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.TextRange;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -41,6 +43,7 @@ public class ToggleQuotesAction extends EditorAction {
 			}
 
 			PsiDocumentManager psiDocManager = PsiDocumentManager.getInstance(project);
+			psiDocManager.commitDocument(editor.getDocument()); // needed when runned for multiple carets, otherwise we do not get updated PsiFile
 			PsiFile psiFile = psiDocManager.getPsiFile(editor.getDocument());
 
 			if (psiFile == null) {
@@ -78,6 +81,14 @@ public class ToggleQuotesAction extends EditorAction {
 				case "Python":
 					togglePython(project, editor, psiFile);
 					break;
+
+				case "HTML":
+				case "XML":
+					toggleHtmlXml(editor, element);
+					break;
+
+				default:
+					toggleOther(editor, element);
 			}
 		}
 
@@ -126,6 +137,35 @@ public class ToggleQuotesAction extends EditorAction {
 			if (intention.isAvailable(project, editor, psiFile)) {
 				intention.invoke(project, editor, psiFile);
 			}
+		}
+
+		private void toggleHtmlXml(Editor editor, PsiElement element) {
+			PsiElement quotedElement = QuotesUtil.findNearbyQuotedElement(element);
+			if (quotedElement == null) {
+				return;
+			}
+
+			String unquoted = StringUtil.unquoteString(quotedElement.getText());
+			String newText = QuotesUtil.isSingelQuoted(quotedElement.getText())
+				? QuotesUtil.DQ + unquoted.replace(QuotesUtil.DQ, QuotesUtil.SQ) + QuotesUtil.DQ
+				: QuotesUtil.SQ + unquoted.replace(QuotesUtil.SQ, QuotesUtil.DQ) + QuotesUtil.SQ;
+
+			TextRange textRange = quotedElement.getTextRange();
+			editor.getDocument().replaceString(textRange.getStartOffset(), textRange.getEndOffset(), newText);
+		}
+
+		private void toggleOther(Editor editor, PsiElement element) {
+			PsiElement quotedElement = QuotesUtil.findNearbyQuotedElement(element);
+			if (quotedElement == null) {
+				return;
+			}
+
+			String newText = QuotesUtil.isSingelQuoted(quotedElement.getText())
+				? QuotesUtil.convertSingleToDoubleQuoted(quotedElement.getText())
+				: QuotesUtil.convertDoubleToSingleQuoted(quotedElement.getText());
+
+			TextRange textRange = quotedElement.getTextRange();
+			editor.getDocument().replaceString(textRange.getStartOffset(), textRange.getEndOffset(), newText);
 		}
 
 	}
