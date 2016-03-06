@@ -52,6 +52,8 @@
 		<action id="ToggleQuotes"
 			class="cz.daku.intellij.extraActions.ToggleQuotesAction"
 			text="Toggle Quotes"/>
+		<action id="SearchOnline" class="cz.daku.intellij.extraActions.SearchOnlineAction"
+			text="Search Online"/>
 	</actions>
 
 </idea-plugin>
