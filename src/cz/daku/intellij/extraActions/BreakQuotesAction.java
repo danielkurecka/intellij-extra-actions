@@ -9,7 +9,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -24,8 +23,6 @@ public class BreakQuotesAction extends EditorAction {
 
 	private static class MyHandler extends EditorWriteActionHandler {
 
-		public static final String SINGLE_QUOTE = "'";
-		public static final String DOUBLE_QUOTE = "\"";
 		private static final String DEFAULT_OPERATOR = "+";
 		private static final Map<String, String> langOperators = new HashMap<>();
 
@@ -41,16 +38,12 @@ public class BreakQuotesAction extends EditorAction {
 
 		@Override
 		public void executeWriteAction(Editor editor, @Nullable Caret caret, DataContext dataContext) {
-			PsiElement element = getPsiElement(editor, caret);
+			PsiElement element = findQuotedElementAtCaret(editor, caret);
 			if (element == null){
 				return;
 			}
 
-			String quote = detectQuote(element);
-			if (quote == null) {
-				return;
-			}
-
+			char quote = element.getText().charAt(0);
 			String lang = element.getLanguage().getID();
 			String operator = langOperators.containsKey(lang) ? langOperators.get(lang) : DEFAULT_OPERATOR;
 			String prefix = quote + " " + operator + " ";
@@ -67,7 +60,7 @@ public class BreakQuotesAction extends EditorAction {
 		}
 
 		@Nullable
-		private PsiElement getPsiElement(Editor editor, @Nullable Caret caret) {
+		private PsiElement findQuotedElementAtCaret(Editor editor, @Nullable Caret caret) {
 			if (caret == null) {
 				return null;
 			}
@@ -90,29 +83,12 @@ public class BreakQuotesAction extends EditorAction {
 				return null;
 			}
 
-			return element;
-		}
-
-		@Nullable
-		private String detectQuote(@NotNull PsiElement element) {
-			for (int i = 0; i < 4; i++) {
-				String text = element.getText();
-				if (text.startsWith(DOUBLE_QUOTE) && text.endsWith(DOUBLE_QUOTE)) {
-					return DOUBLE_QUOTE;
-				}
-
-				if (text.startsWith(SINGLE_QUOTE) && text.endsWith(SINGLE_QUOTE)) {
-					return SINGLE_QUOTE;
-				}
-
-				element = element.getParent();
-				//noinspection ConstantConditions
-				if (element == null) {
-					break;
-				}
+			PsiElement quotedElement = QuotesUtil.findNearbyQuotedElement(element);
+			if (quotedElement == null) {
+				return null;
 			}
 
-			return null;
+			return quotedElement;
 		}
 
 	}
