@@ -1,7 +1,7 @@
 <idea-plugin version="2">
 	<id>cz.daku.intellij.extraActions</id>
 	<name>Extra Actions</name>
-	<version>1.0</version>
+	<version>1.1</version>
 	<vendor email="danielkurecka@gmail.com">Daniel Kurecka</vendor>
 
 	<description><![CDATA[
@@ -10,10 +10,18 @@
 		at github for list and description.
 	]]></description>
 
-	<!--<change-notes><![CDATA[
-
+	<change-notes><![CDATA[
+		<b>1.1</b><br>
+		<ul>
+			<li>New action: Search Online</li>
+			<li>Toggle Quotes action now works with Ruby, HTML and other languages</li>
+		</ul>
+		<b>1.0</b><br>
+		<ul>
+			<li>First relase</li>
+		</ul>
 		]]>
-	</change-notes>-->
+	</change-notes>
 
 	<idea-version since-build="135"/>
 	<depends>com.intellij.modules.lang</depends>

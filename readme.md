@@ -11,8 +11,7 @@ Recommended shortcut: <kbd>CTRL+SHIFT+ALT+L</kbd>
 
 ### Toggle Quotes
 Switches between single and double quotes inside a string literal.
-It works in PHP, JavaScript<sup>1</sup>, CoffeeScript<sup>1</sup>, Python and CSS.<br>
-<sup>1</sup> Requires enabled JSIntentionPowerPack plugin<br>
+It works in most languages, for JavaScript/CoffeeScript plugin "JavaScript Intention Power Pack" must be enabled.<br>
 Recommended shortcut: <kbd>CTRL+'</kbd>
 
 ### Break Quotes
@@ -22,7 +21,7 @@ operators with the caret between them. For example:<br>
 will become<br>
 `var a = "Hello " + | + "world."`.<br>
 <br>It works in most languages and with multiple carets.<br>
-Recommended shortcut: <kbd>ALT+.</kbd>
+Recommended shortcut: <kbd>CTRL+.</kbd>
 
 ### Move Caret to Next/Previous Paragraph
 Moves caret to the first empty line.<br>
@@ -36,9 +35,16 @@ Recommended shortcut: <kbd>CTRL+SHIFT+DOWN/UP</kbd>
 Shows current file in the project tool window.<br>
 Recommended shortcut: <kbd>CTRL+SHIFT+Y</kbd>
 
+### Search Online
+Searches the selection or word at the caret via Google.<br>
+Recommended shortcut: <kbd>SHIFT+F1</kbd>
+
 ## Installation
 Inside the IDE go to _Settings|Plugins_, click _Browser Repositories..._ and search for 'Extra Actions'.
 
 #### Shortcuts
 No shortcuts are set by default. This is done to prevent conflicts.
 You can easily set them by going to _Settings|Keymap|Plugins|Extra Actions_.
+
+#### License
+Apache 2.0
