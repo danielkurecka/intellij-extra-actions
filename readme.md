@@ -11,7 +11,7 @@ Recommended shortcut: <kbd>CTRL+SHIFT+ALT+L</kbd>
 
 ### Toggle Quotes
 Switches between single and double quotes inside a string literal.
-It works in most languages, for JavaScript/CoffeeScript plugin "JavaScript Intention Power Pack" must be enabled.<br>
+It works in most languages and with multiple carets. For JavaScript/CoffeeScript plugin "JavaScript Intention Power Pack" must be enabled.<br>
 Recommended shortcut: <kbd>CTRL+'</kbd>
 
 ### Break Quotes
