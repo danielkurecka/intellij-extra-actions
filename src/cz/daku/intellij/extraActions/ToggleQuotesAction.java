@@ -151,9 +151,17 @@ public class ToggleQuotesAction extends EditorAction {
 			}
 
 			String unquoted = StringUtil.unquoteString(quotedElement.getText());
-			String newText = QuotesUtil.isSingelQuoted(quotedElement.getText())
-				? QuotesUtil.DQ + unquoted.replace(QuotesUtil.DQ, QuotesUtil.SQ) + QuotesUtil.DQ
-				: QuotesUtil.SQ + unquoted.replace(QuotesUtil.SQ, QuotesUtil.DQ) + QuotesUtil.SQ;
+			StringBuilder newText = new StringBuilder();
+
+			if (QuotesUtil.isSingelQuoted(quotedElement.getText())){
+				newText.append("\"");
+				newText.append(unquoted.replaceAll("\"", "&quot;").replaceAll("&#039;", "'"));
+				newText.append("\"");
+			} else {
+				newText.append("'");
+				newText.append(unquoted.replaceAll("&quot;", "\"").replaceAll("'", "&#039;"));
+				newText.append("'");
+			}
 
 			TextRange textRange = quotedElement.getTextRange();
 			editor.getDocument().replaceString(textRange.getStartOffset(), textRange.getEndOffset(), newText);
