@@ -14,6 +14,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.css.actions.CssReplaceQuotesIntention;
 import com.jetbrains.php.lang.intentions.PhpReplaceQuotesIntention;
 import com.jetbrains.python.codeInsight.intentions.PyQuotedStringIntention;
+import cz.daku.intellij.extraActions.settings.SettingsStorage;
 import org.coffeescript.codeinsight.intentions.CoffeeScriptDoubleToSingleQuotedStringIntention;
 import org.coffeescript.codeinsight.intentions.CoffeeScriptSingleToDoubleQuotedStringIntention;
 import org.intellij.idea.lang.javascript.intention.string.JSDoubleToSingleQuotedStringIntention;
@@ -93,9 +94,13 @@ public class ToggleQuotesAction extends EditorAction {
 		}
 
 		private void togglePhp(Project project, Editor editor, PsiElement element) {
-			PhpReplaceQuotesIntention intention = new PhpReplaceQuotesIntention();
-			if (intention.isAvailable(project, editor, element)) {
-				intention.invoke(project, editor, element);
+			if (SettingsStorage.getInstance().getPhpSimpleQuotesReplacement()) {
+				toggleOther(editor, element);
+			} else {
+				PhpReplaceQuotesIntention intention = new PhpReplaceQuotesIntention();
+				if (intention.isAvailable(project, editor, element)) {
+					intention.invoke(project, editor, element);
+				}
 			}
 		}
 

@@ -64,4 +64,9 @@
 			text="Search Online"/>
 	</actions>
 
+	<extensions defaultExtensionNs="com.intellij">
+		<applicationConfigurable displayName="Extra Actions" id="settings" instance="cz.daku.intellij.extraActions.settings.SettingsConfigurable" />
+		<applicationService serviceInterface="cz.daku.intellij.extraActions.settings.SettingsStorage" serviceImplementation="cz.daku.intellij.extraActions.settings.SettingsStorage"/>
+	</extensions>
+
 </idea-plugin>
