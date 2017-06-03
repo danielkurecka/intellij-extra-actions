@@ -1,7 +1,7 @@
 <idea-plugin version="2">
 	<id>cz.daku.intellij.extraActions</id>
 	<name>Extra Actions</name>
-	<version>1.1</version>
+	<version>1.2</version>
 	<vendor email="danielkurecka@gmail.com">Daniel Kurecka</vendor>
 
 	<description><![CDATA[
@@ -11,6 +11,11 @@
 	]]></description>
 
 	<change-notes><![CDATA[
+		<b>1.2</b><br>
+		<ul>
+			<li>Togle Quotes for PHP: added option to choose whether special characters will be escaped</li>
+			<li>Togle Quotes for HTML/XML: properly escaped quotes inside attributes</li>
+		</ul>
 		<b>1.1</b><br>
 		<ul>
 			<li>New action: Search Online</li>
