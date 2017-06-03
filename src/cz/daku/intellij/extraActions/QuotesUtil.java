@@ -29,7 +29,7 @@ public class QuotesUtil {
 	}
 
 	public static String convertSingleToDoubleQuoted(String text) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		char[] chars = StringUtil.unquoteString(text).toCharArray();
 		boolean escaping = false;
 
@@ -39,22 +39,22 @@ public class QuotesUtil {
 			if (ch == BS) {
 				escaping = !escaping;
 				if (i == chars.length - 1 || chars[i + 1] != SQ) {
-					result += ch;
+					result.append(ch);
 				}
 			} else if (ch == DQ) {
-				result += escaping ? "" + BS + BS + DQ : "" + BS + DQ;
+				result.append(escaping ? "" + BS + BS + DQ : "" + BS + DQ);
 				escaping = false;
 			} else {
-				result += ch;
+				result.append(ch);
 				escaping = false;
 			}
 		}
 
-		return DQ + result + DQ;
+		return DQ + result.toString() + DQ;
 	}
 
 	public static String convertDoubleToSingleQuoted(String text) {
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		char[] chars = StringUtil.unquoteString(text).toCharArray();
 		boolean escaping = false;
 
@@ -64,18 +64,18 @@ public class QuotesUtil {
 			if (ch == BS) {
 				escaping = !escaping;
 				if (i == chars.length - 1 || chars[i + 1] != DQ) {
-					result += ch;
+					result.append(ch);
 				}
 			} else if (ch == SQ) {
-				result += escaping ? SQ : "" + BS + SQ;
+				result.append(escaping ? SQ : "" + BS + SQ);
 				escaping = false;
 			} else {
-				result += ch;
+				result.append(ch);
 				escaping = false;
 			}
 		}
 
-		return SQ + result + SQ;
+		return SQ + result.toString() + SQ;
 	}
 
 }
