@@ -1,49 +1,52 @@
 <idea-plugin version="2">
 	<id>cz.daku.intellij.extraActions</id>
 	<name>Extra Actions</name>
-	<version>1.2</version>
+	<version>1.2.1</version>
 	<vendor url="http://github.com/danielkurecka/intellij-extra-actions" email="danielkurecka@gmail.com">Daniel Kurecka</vendor>
 
 	<description><![CDATA[
-		<h1>Extra Actions</h1>
 		<p>This plugin provides some additional actions:</p>
-		<h3>Split Selection into Lines</h3>
-		<p>Adds a new caret at each line of the selection, it works the same way as in Sublime Text.<br><br>
-			Recommended shortcut: <kbd>CTRL+SHIFT+L</kbd></p>
-		<h3>Split Selection</h3>
-		<p>Splits selection into multiple carets by custom character(s).<br><br>
-			Recommended shortcut: <kbd>CTRL+SHIFT+ALT+L</kbd></p>
-		<h3>Toggle Quotes</h3>
+		<b>Split Selection into Lines</b>
+		<p>Adds a new caret at each line of the selection, it works the same way as in Sublime Text.<br>
+			Recommended shortcut: <code>CTRL+SHIFT+L</code></p>
+		<b>Split Selection</b>
+		<p>Splits selection into multiple carets by custom character(s).<br>
+			Recommended shortcut: <code>CTRL+SHIFT+ALT+L</code></p>
+		<b>Toggle Quotes</b>
 		<p>Switches between single and double quotes inside a string literal.
 			It works in most languages and with multiple carets. For JavaScript/CoffeeScript a plugin "JavaScript
-			Intention Power Pack" must be enabled.<br><br>
-			Recommended shortcut: <kbd>CTRL+'</kbd></p>
-		<h3>Break Quotes</h3>
+			Intention Power Pack" must be enabled.<br>
+			Recommended shortcut: <code>CTRL+'</code></p>
+		<b>Break Quotes</b>
 		<p>Splits string literal at the caret position and adds concatenation<br>
 			operators with the caret between them. For example:<br>
 			<code>var a = "Hello |world.";</code><br>
 			will become<br>
 			<code>var a = "Hello " + | + "world.";</code>.<br>
-			<br>It works in most languages and with multiple carets.<br><br>
-			Recommended shortcut: <kbd>CTRL+.</kbd></p>
-		<h3>Move Caret to Next/Previous Paragraph</h3>
-		<p>Moves caret to the first empty line.<br><br>
-			Recommended shortcut: <kbd>CTRL+DOWN/UP</kbd></p>
-		<h3>Move Caret to Next/Previous Paragraph with Selection</h3>
-		<p>Moves caret to the first empty line with selection.<br><br>
-			Recommended shortcut: <kbd>CTRL+SHIFT+DOWN/UP</kbd></p>
-		<h3>Select in Project</h3>
-		<p>Shows current file in the project tool window.<br><br>
-			Recommended shortcut: <kbd>CTRL+SHIFT+Y</kbd></p>
-		<h3>Search Online</h3>
-		<p>Searches the selection or word at the caret via Google.<br><br>
-			Recommended shortcut: <kbd>SHIFT+F1</kbd></p>
-		<h4>Shortcuts</h4>
+			It works in most languages and with multiple carets.<br>
+			Recommended shortcut: <code>CTRL+.</code></p>
+		<b>Move Caret to Next/Previous Paragraph</b>
+		<p>Moves caret to the first empty line.<br>
+			Recommended shortcut: <code>CTRL+DOWN/UP</code></p>
+		<b>Move Caret to Next/Previous Paragraph with Selection</b>
+		<p>Moves caret to the first empty line with selection.<br>
+			Recommended shortcut: <code>CTRL+SHIFT+DOWN/UP</code></p>
+		<b>Select in Project</b>
+		<p>Shows current file in the project tool window.<br>
+			Recommended shortcut: <code>CTRL+SHIFT+Y</code></p>
+		<b>Search Online</b>
+		<p>Searches the selection or word at the caret via Google.<br>
+			Recommended shortcut: <code>SHIFT+F1</code></p>
+		<b>Shortcuts</b>
 		<p>No shortcuts are set by default. This is done to prevent conflicts.<br>
 			You can easily set them by going to <em>Settings|Keymap|Plugins|Extra Actions</em>.</p>
 		]]></description>
 
 	<change-notes><![CDATA[
+		<b>1.2.1</b><br>
+		<ul>
+			<li>Better formatting of plugin description</li>
+		</ul>
 		<b>1.2</b><br>
 		<ul>
 			<li>Togle Quotes for PHP: added option to choose whether special characters will be escaped</li>
