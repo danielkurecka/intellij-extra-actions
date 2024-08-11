@@ -19,8 +19,4 @@ public class SelectInProjectAction extends AnAction implements DumbAware {
 		target.selectIn(context, true);
 	}
 
-	@Override
-	public void update(AnActionEvent e) {
-		e.getPresentation().setEnabled(SelectInContextImpl.createContext(e) != null);
-	}
 }

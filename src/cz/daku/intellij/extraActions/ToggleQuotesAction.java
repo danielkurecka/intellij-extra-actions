@@ -1,5 +1,6 @@
 package cz.daku.intellij.extraActions;
 
+import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Caret;
 import com.intellij.openapi.editor.Editor;
@@ -19,6 +20,7 @@ import org.coffeescript.codeinsight.intentions.CoffeeScriptDoubleToSingleQuotedS
 import org.coffeescript.codeinsight.intentions.CoffeeScriptSingleToDoubleQuotedStringIntention;
 import org.intellij.idea.lang.javascript.intention.string.JSDoubleToSingleQuotedStringIntention;
 import org.intellij.idea.lang.javascript.intention.string.JSSingleToDoubleQuotedStringIntention;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ToggleQuotesAction extends EditorAction {
@@ -97,9 +99,9 @@ public class ToggleQuotesAction extends EditorAction {
 			if (SettingsStorage.getInstance().getPhpSimpleQuotesReplacement()) {
 				toggleOther(editor, element);
 			} else {
-				PhpReplaceQuotesIntention intention = new PhpReplaceQuotesIntention();
-				if (intention.isAvailable(project, editor, element)) {
-					intention.invoke(project, editor, element);
+				@NotNull IntentionAction intention = new PhpReplaceQuotesIntention().asIntention();
+				if (intention.isAvailable(project, editor, element.getContainingFile())) {
+					intention.invoke(project, editor, element.getContainingFile());
 				}
 			}
 		}

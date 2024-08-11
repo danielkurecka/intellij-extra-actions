@@ -64,7 +64,7 @@
 		]]>
 	</change-notes>
 
-	<idea-version since-build="135"/>
+	<idea-version since-build="233"/>
 	<depends>com.intellij.modules.lang</depends>
 	<!-- these depends maybe required for ToggleQuotes action -->
 	<depends optional="true">com.jetbrains.php</depends>
