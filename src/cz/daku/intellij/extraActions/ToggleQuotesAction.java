@@ -46,7 +46,7 @@ public class ToggleQuotesAction extends EditorAction {
 			}
 
 			PsiDocumentManager psiDocManager = PsiDocumentManager.getInstance(project);
-			psiDocManager.commitDocument(editor.getDocument()); // needed when runned for multiple carets, otherwise we do not get updated PsiFile
+			psiDocManager.commitDocument(editor.getDocument()); // needed when running for multiple carets, otherwise we do not get updated PsiFile
 			PsiFile psiFile = psiDocManager.getPsiFile(editor.getDocument());
 
 			if (psiFile == null) {

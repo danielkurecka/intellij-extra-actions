@@ -1,67 +1,111 @@
-<idea-plugin version="2">
+<idea-plugin>
 	<id>cz.daku.intellij.extraActions</id>
 	<name>Extra Actions</name>
 	<version>2.0.0</version>
-	<vendor url="http://github.com/danielkurecka/intellij-extra-actions" email="danielkurecka@gmail.com">Daniel Kurecka</vendor>
+	<vendor url="http://github.com/danielkurecka/intellij-extra-actions" email="danielkurecka@gmail.com">Daniel Kurečka</vendor>
 
 	<description><![CDATA[
-		<p>This plugin provides some additional actions:</p>
-		<b>Split Selection into Lines</b>
-		<p>Adds a new caret at each line of the selection, it works the same way as in Sublime Text.<br>
-			Recommended shortcut: <code>CTRL+SHIFT+L</code></p>
-		<b>Split Selection</b>
-		<p>Splits selection into multiple carets by custom character(s).<br>
-			Recommended shortcut: <code>CTRL+SHIFT+ALT+L</code></p>
-		<b>Toggle Quotes</b>
-		<p>Switches between single and double quotes inside a string literal.
-			It works in most languages and with multiple carets. For JavaScript/CoffeeScript a plugin "JavaScript
-			Intention Power Pack" must be enabled.<br>
-			Recommended shortcut: <code>CTRL+'</code></p>
-		<b>Break Quotes</b>
-		<p>Splits string literal at the caret position and adds concatenation<br>
-			operators with the caret between them. For example:<br>
+		<a href="https://github.com/danielkurecka/intellij-extra-actions" target="_blank">GitHub</a> |
+		<a href="https://github.com/danielkurecka/intellij-extra-actions/issues" target="_blank">Issues</a> |
+		<a href="https://www.paypal.com/donate/?business=AKVBPBR2LHK3U&no_recurring=1&currency_code=USD" target="_blank">Donate</a>
+
+		<h1>Provides Additional Actions</h1>
+
+		<p>
+			<b>Note:</b> no keyboard shortcuts are set by default to avoid conflicts. You can easily configure them by going to <em>Settings | Keymap | Plugins | Extra Actions</em>.
+		</p>
+
+		<h3>Split Selection into Lines</h3>
+		<p>
+			Adds a new caret at each line of the selection, it works the same way as in Sublime Text.<br>
+			Recommended shortcut: <code>Ctrl+Shift+L</code>
+		</p>
+
+		<h3>Split Selection</h3>
+		<p>
+			Splits selection into multiple carets by custom character(s).<br>
+			Recommended shortcut: <code>Ctrl+Shift+Alt+L</code>
+		</p>
+
+		<h3>Toggle Quotes</h3>
+		<p>
+			Switches between single and double quotes inside a string literal. It works in most languages and with multiple carets. For JavaScript/CoffeeScript, the "JavaScript Intention Power Pack" plugin must be enabled.<br>
+			Recommended shortcut: <code>Ctrl+'</code>
+		</p>
+
+		<h3>Break Quotes</h3>
+		<p>
+			Splits a string literal at the caret position and adds concatenation operators with the caret between them. For example in JS:<br>
 			<code>var a = "Hello |world.";</code><br>
 			will become<br>
 			<code>var a = "Hello " + | + "world.";</code>.<br>
 			It works in most languages and with multiple carets.<br>
-			Recommended shortcut: <code>CTRL+.</code></p>
-		<b>Move Caret to Next/Previous Paragraph</b>
-		<p>Moves caret to the first empty line.<br>
-			Recommended shortcut: <code>CTRL+DOWN/UP</code></p>
-		<b>Move Caret to Next/Previous Paragraph with Selection</b>
-		<p>Moves caret to the first empty line with selection.<br>
-			Recommended shortcut: <code>CTRL+SHIFT+DOWN/UP</code></p>
-		<b>Select in Project</b>
-		<p>Shows current file in the project tool window.<br>
-			Recommended shortcut: <code>CTRL+SHIFT+Y</code></p>
-		<b>Search Online</b>
-		<p>Searches the selection or word at the caret via Google.<br>
-			Recommended shortcut: <code>SHIFT+F1</code></p>
-		<b>Shortcuts</b>
-		<p>No shortcuts are set by default. This is done to prevent conflicts.<br>
-			You can easily set them by going to <em>Settings|Keymap|Plugins|Extra Actions</em>.</p>
-		]]></description>
+			Recommended shortcut: <code>Ctrl+.</code>
+		</p>
+
+		<h3>Run This</h3>
+		<p>
+			This action is equivalent to right-clicking a file and selecting "Run". It bypasses any dialogs and immediately runs the current file/context.<br>
+			Recommended shortcut: <code>F5</code>
+		</p>
+
+		<h3>Debug This</h3>
+		<p>
+			This action is equivalent to right-clicking a file and selecting "Debug". It bypasses any dialogs and immediately debugs the current file/context.<br>
+			Recommended shortcut: <code>Shift+F5</code>
+		</p>
+
+		<h3>Select in Project</h3>
+		<p>
+			Shows the current file in the Project tool window.<br>
+			Recommended shortcut: <code>Ctrl+Shift+Y</code>
+		</p>
+
+		<h3>Search Online</h3>
+		<p>
+			Searches the selection or the word at the caret via Google.<br>
+			Recommended shortcut: <code>Shift+F1</code>
+		</p>
+
+		<h3>Move Caret to Next/Previous Paragraph</h3>
+		<p>
+			Moves the caret to the first empty line.<br>
+			Recommended shortcut: <code>Ctrl+Down/Up</code>
+		</p>
+
+		<h3>Move Caret to Next/Previous Paragraph with Selection</h3>
+		<p>
+			Moves the caret to the first empty line while keeping the selection.<br>
+			Recommended shortcut: <code>Ctrl+Shift+Down/Up</code>
+		</p>
+	]]></description>
+
 
 	<change-notes><![CDATA[
+		<b>2.0.0</b><br>
+		<ul>
+			<li>Fixed compatibility issues.</li>
+			<li>New actions: "Run This" and "Debug This" - allows you to bind the right-click option for Run/Debug directly to a keyboard shortcut.</li>
+		</ul>
 		<b>1.2.1</b><br>
 		<ul>
-			<li>Better formatting of plugin description</li>
+			<li>Improved formatting of the plugin description.</li>
 		</ul>
 		<b>1.2</b><br>
 		<ul>
-			<li>Togle Quotes for PHP: added option to choose whether special characters will be escaped</li>
-			<li>Togle Quotes for HTML/XML: properly escaped quotes inside attributes</li>
+			<li>Toggle Quotes for PHP: Added an option to choose whether special characters should be escaped.</li>
+			<li>Toggle Quotes for HTML/XML: Properly escaped quotes inside attributes.</li>
 		</ul>
 		<b>1.1</b><br>
 		<ul>
-			<li>New action: Search Online</li>
-			<li>Toggle Quotes action now works with Ruby, HTML and other languages</li>
+			<li>New action: Search Online.</li>
+			<li>Toggle Quotes action now works with Ruby, HTML, and other languages.</li>
 		</ul>
 		<b>1.0</b><br>
 		<ul>
-			<li>First relase</li>
+			<li>Initial release.</li>
 		</ul>
-		]]>
+	]]>
 	</change-notes>
 
 	<idea-version since-build="233"/>
@@ -111,7 +155,7 @@
 
 	<extensions defaultExtensionNs="com.intellij">
 		<applicationConfigurable displayName="Extra Actions" id="settings" instance="cz.daku.intellij.extraActions.settings.SettingsConfigurable" />
-		<applicationService serviceInterface="cz.daku.intellij.extraActions.settings.SettingsStorage" serviceImplementation="cz.daku.intellij.extraActions.settings.SettingsStorage"/>
+		<applicationService serviceImplementation="cz.daku.intellij.extraActions.settings.SettingsStorage"/>
 	</extensions>
 
 </idea-plugin>

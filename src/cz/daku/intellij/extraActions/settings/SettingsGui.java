@@ -65,7 +65,7 @@ public class SettingsGui {
 		phpSimpleQuotesReplacementCheckBox.setDisplayedMnemonicIndex(3);
 		rootPanel.add(phpSimpleQuotesReplacementCheckBox, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 1, false));
 		final JLabel label2 = new JLabel();
-		label2.setText("If checked, it will not (un)escape special characters like $, \\n and others");
+		label2.setText("If checked, special characters such as $, \\n, and others will not be escaped/unescaped during toggling.");
 		rootPanel.add(label2, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 2, false));
 	}
 
@@ -75,4 +75,5 @@ public class SettingsGui {
 	public JComponent $$$getRootComponent$$$() {
 		return rootPanel;
 	}
+
 }
