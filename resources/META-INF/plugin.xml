@@ -111,11 +111,11 @@
 	<idea-version since-build="233"/>
 	<depends>com.intellij.modules.lang</depends>
 	<!-- these depends maybe required for ToggleQuotes action -->
-	<depends optional="true">com.jetbrains.php</depends>
-	<depends optional="true">com.intellij.css</depends>
-	<depends optional="true">JSIntentionPowerPack</depends>
-	<depends optional="true">org.coffeescript</depends>
-	<depends optional="true">com.intellij.modules.python</depends>
+	<depends optional="true" config-file="other/com.jetbrains.php.xml">com.jetbrains.php</depends>
+	<depends optional="true" config-file="other/com.intellij.css.xml">com.intellij.css</depends>
+	<depends optional="true" config-file="other/JSIntentionPowerPack.xml">JSIntentionPowerPack</depends>
+	<depends optional="true" config-file="other/org.coffeescript.xml">org.coffeescript</depends>
+	<depends optional="true" config-file="other/com.intellij.modules.python.xml">com.intellij.modules.python</depends>
 
 	<actions>
 		<action id="cz.daku.intellij.extraActions.RunThisAction" class="cz.daku.intellij.extraActions.RunThisAction"
