@@ -52,5 +52,46 @@ Inside the IDE go to _Settings | Plugins_, click _Marketplace_ and search for 'E
 No keyboard shortcuts are set by default to avoid conflicts. You can easily configure them by going to: 
 _Settings | Keymap | Plugins | Extra Actions_.
 
-#### License
+
+## Developing
+The plugin currently uses the old "DevKit" approach.
+
+### Step-by-step instructions to develop/compile the plugin from source:
+
+1. **Clone this repository or your fork:**
+	```bash
+	git clone https://github.com/danielkurecka/intellij-extra-actions
+	```
+
+2. **Download external libraries:**
+	```bash
+	cd extra-actions
+	./external/download.sh
+	```
+
+3. **Open the cloned directory in IntelliJ Community Edition.**
+
+4. **Install the "Plugin DevKit" plugin:**
+Go to _File | Settings | Plugins_ and install the "Plugin DevKit" plugin.
+
+5. **Set up the SDK:**
+	- Go to _File | Project Structure | Project_.
+	- In the SDK dropdown, choose **IntelliJ Community Edition SDK**.
+	- If no SDK is available:
+		- Select _Add IntelliJ Platform Plugin SDK from disk..._.
+		- Choose the directory of your IntelliJ Community Edition installation.
+
+6. **Build the project:**
+	- To build the project, go to _Build | Build Project_.
+	- To run the plugin, go to _Run | Run 'Plugin'_, which will run the plugin within your IntelliJ Community Edition.
+
+7. **Run the plugin in another IntelliJ IDE:**
+	- Go to _Run | Edit Configurations | Plugin_
+	- For the JRE, select the installation directory of your target IntelliJ IDE.
+
+8. **Create the plugin JAR file:**
+	- Go to _Build | Prepare Module 'extra-actions' for Deployment_.
+	- This will generate the plugin JAR file, which can be manually loaded via _Settings | Plugins | Install Plugin from Disk_
+
+## License
 Apache 2.0
